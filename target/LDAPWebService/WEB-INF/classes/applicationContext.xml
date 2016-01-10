@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:ldap="http://www.springframework.org/schema/ldap"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/ldap http://www.springframework.org/schema/ldap/spring-ldap.xsd">
+
+   <ldap:context-source
+          url="ldap://ceivirdxa0607.coxenterprises.com:1389"
+          base="dc=cox,dc=com"
+          username="cn=oudadmin"
+          password="oud4DEV" />
+
+   <ldap:ldap-template id="ldapTemplate" />
+
+   <bean id="userDao" class="com.esadvisory.ws.dao.UserDaoImpl">
+      <property name="ldapTemplate" ref="ldapTemplate" />
+   </bean>
+</beans>
